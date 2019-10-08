@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Amicable Numbers</title>
+<link href="main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<h1>Are They Amicable?</h1>
+	
+	<form>
+		<h3>Number 1</h3>
+		<input type="text" placeholder="Number" id="num1">
+		<br>
+		<h3>Number 2</h3>
+		<input type="text" placeholder="Second number" id="num2">
+		<br>
+		<br>
+		<button type="button" onClick="processForm()">Submit</button>
+	</form>
+	
+	<p id="one"></p>
+	<p id="two"></p>
+	<p id="three"></p>
+	<p id="four"></p>
+	<p id="five"></p>
+	<p id="six"></p>
+	<h1 id="seven"></h1>
+	
+	
+	
+	<script language="javascript" type="text/javascript">
+		
+		var num1,num2;
+		
+		function processForm(){
+			
+			var factors1 = new Array();
+			var factors2 = new Array();
+			
+			num1 = document.getElementById("num1").value;
+			num2 = document.getElementById("num2").value;
+			
+//			document.getElementById("one").innerHTML = (num1);
+//			document.getElementById("two").innerHTML = (num2);
+//			document.getElementById("three").innerHTML = (isFactor(num1,num2));
+//			document.getElementById("three").innerHTML = (getFactors(100));
+//			document.getElementById("four").innerHTML = (getFactors(20));
+//			document.getElementById("three").innerHTML = (getFactors(220));
+//			document.getElementById("four").innerHTML = (getFactors(284));
+//			document.getElementById("three").innerHTML = (getFactors(5020));
+//			document.getElementById("four").innerHTML = (getFactors(5564));
+//			document.getElementById("three").innerHTML = (getFactors(0));
+//			document.getElementById("four").innerHTML = (getFactors(0));
+			
+			factors1 = getFactors(num1);
+			factors2 = getFactors(num2);
+			
+//			document.getElementById("five").innerHTML = (addFactors(temp1));
+//			document.getElementById("six").innerHTML = (addFactors(temp2));
+			
+			if((addFactors(factors1) == num2) && (addFactors(factors2) == num1)){
+				document.getElementById("seven").innerHTML = ("They are Amicable!");
+			}else{
+				document.getElementById("seven").innerHTML = ("They are not Amicable");
+			}
+			
+			
+		}
+		
+		function isFactor(input,test){
+			if((input%test) == 0){
+				return true;
+			}else{
+				return false;
+			}
+			
+			//This function was not tested because I feel its self explanatory
+			
+		}
+		
+		function showFactors(listNums){
+			return listNums;
+		}
+		
+		function addFactors(listNums){
+			var total = 0;
+			for(i in listNums){
+				total += listNums[i];
+			}
+			
+			return total;
+		}
+		
+		function getFactors(num){
+			var counter = 0;
+			var holder = new Array();
+			for(i = 0; i < num; i++){
+				if(isFactor(num, i) == true){
+					holder[counter] = i;
+					counter++;
+				}
+			}
+			
+			return holder;
+		}
+	
+	</script>
+</body>
+</html>
